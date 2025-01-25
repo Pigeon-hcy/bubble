@@ -51,15 +51,6 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (movement.x != 0)
-        {
-            rb.linearVelocity = new Vector2(movement.x * movementMult, 0);
-
-        }
-    }
-
-    private void Update()
-    {
         if (inDoubleClick && DoubleClickWindow > 0)
         {
             DoubleClickWindow--;
@@ -71,12 +62,22 @@ public class PlayerMove : MonoBehaviour
             inDoubleClick = false;
             DoubleClickWindow = DoubleClickWindowTimer;
         }
+        if (movement.x != 0)
+        {
+            rb.linearVelocity = new Vector2(movement.x * movementMult, 0);
 
-        if (Input.GetKeyDown(KeyCode.W) && gameManager.blockInput == false && fuel >= 100)
+        }
+    }
+
+    private void Update()
+    {
+        
+
+        if (Input.GetKeyDown(KeyCode.W) && gameManager.blockInput == false && fuel >= 50)
         {
             if (playerHeight.height < 5 && playerHeight.height >= -5)
             {
-                fuel -= 100;
+                fuel -= 50;
                 if (!canGoUp)
                 {
                     switch (player)
@@ -106,11 +107,11 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && gameManager.blockInput == false && fuel >= 100)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && gameManager.blockInput == false && fuel >= 50)
         {
             if (playerHeight.height < 5 && playerHeight.height >= -5)
             {
-                fuel -= 100;
+                fuel -= 50;
                 if (!canGoUp)
                 {
                     switch (player)
