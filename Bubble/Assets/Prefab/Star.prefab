@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 2853145877252553536}
   - component: {fileID: 5471199222780380364}
   - component: {fileID: 481992377409814235}
+  - component: {fileID: 7430100155163797743}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Star
   m_TagString: Star
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,3 +153,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7430100155163797743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003911967238850909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421691177282ddf47a49619238cf9d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 481992377409814235}

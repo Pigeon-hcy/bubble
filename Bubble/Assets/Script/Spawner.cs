@@ -24,20 +24,20 @@ public class Spawner : MonoBehaviour
         {
             Vector3 spawnPoint = new Vector3(Random.Range(randomRad, -randomRad), this.transform.position.y, 0);
             Instantiate(Coin, spawnPoint, Quaternion.identity);
-            shootTimer = shootTime;
+            shootTimer = shootTime + Random.Range(-100, 100);
         }
 
 
         starshootTimer--;
         if (starshootTimer <= 0)
         {
-            Vector3 spawnPoint = new Vector3(Random.Range(randomRad, -randomRad), this.transform.position.y, 0);
-            Instantiate(Star, spawnPoint, Quaternion.identity);
-            spawnPoint = new Vector3(Random.Range(randomRad, -randomRad), this.transform.position.y, 0);
-            Instantiate(Star, spawnPoint, Quaternion.identity);
-            spawnPoint = new Vector3(Random.Range(randomRad, -randomRad), this.transform.position.y, 0);
-            Instantiate(Star, spawnPoint, Quaternion.identity);
-            starshootTimer = starshootTime;
+            for (int i = 0; i < Random.Range(1, 4); i++)
+            {
+                Vector3 spawnPoint = new Vector3(Random.Range(randomRad, -randomRad), this.transform.position.y, 0);
+                Instantiate(Star, spawnPoint, Quaternion.identity);
+                starshootTimer = starshootTime + Random.Range(0, 600);
+            }
+
         }
     }
 }
