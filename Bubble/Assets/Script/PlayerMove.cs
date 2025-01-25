@@ -16,6 +16,7 @@ public class PlayerMove : MonoBehaviour
 
     public PlayerType player;
     public PlayerHeight playerHeight;
+    public PlayerHeight anotherPlayerHeight;
     [Header("Common")]
     public Vector2 movement;
     public Rigidbody2D rb;
@@ -87,6 +88,7 @@ public class PlayerMove : MonoBehaviour
                             StartCoroutine(StartKnockPlayer());
                             Debug.Log("P1");
                             break;
+
                         case PlayerType.Player2:
                             break;
                     }
@@ -311,6 +313,21 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Star")
+        {
+            Debug.Log("Tri");
+            if (playerHeight.height > -5)
+            {
+                Destroy(collision.gameObject);
+                playerHeight.PlayerMoveDown();
+            }
+
+        }
+    }
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -327,12 +344,17 @@ public class PlayerMove : MonoBehaviour
                         {
                             upleftCollision.PlayFeedbacks();
                             anotherPlayer.downrightCollision.PlayFeedbacks();
+                            playerHeight.height += 1;
+                            anotherPlayerHeight.height -= 1;
+                            
                         }
                         //player 2 on the left
                         else if (collision.transform.position.x < this.transform.position.x)
                         {
                             uprightCollision.PlayFeedbacks();
                             anotherPlayer.downleftCollision.PlayFeedbacks();
+                            playerHeight.height += 1;
+                            anotherPlayerHeight.height -= 1;
                         }
                     }
                     //player 1 go down
@@ -343,12 +365,16 @@ public class PlayerMove : MonoBehaviour
                         {
                             downleftCollision.PlayFeedbacks();
                             anotherPlayer.uprightCollision.PlayFeedbacks();
+                            playerHeight.height -= 1;
+                            anotherPlayerHeight.height += 1;
                         }
                         //player 2 on the left
                         else if (collision.transform.position.x < this.transform.position.x)
                         {
                             downrightCollision.PlayFeedbacks();
                             anotherPlayer.upleftCollision.PlayFeedbacks();
+                            playerHeight.height -= 1;
+                            anotherPlayerHeight.height += 1;
                         }
                     }
                     break;
@@ -358,12 +384,16 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+        
+
+
+
     }
     private IEnumerator StartMovePlayer()
     {
         playerHeight.ThisPlayerMoveUp();
         gameManager.blockInput = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         gameManager.blockInput = false;
     }
 
@@ -372,7 +402,7 @@ public class PlayerMove : MonoBehaviour
     {
         playerHeight.ThisPlayerKnockHead();
         gameManager.blockInput = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         Vector3 currentPosition = transform.position;
         float roundedY = Mathf.Round(currentPosition.y * 2f) / 2f;
         this.transform.position = new Vector3(currentPosition.x, roundedY, currentPosition.z);

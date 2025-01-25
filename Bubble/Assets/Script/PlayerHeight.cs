@@ -6,7 +6,9 @@ public class PlayerHeight : MonoBehaviour
     public int height;
     public PlayerHeight AnotherPlayer;
     public MMF_Player PlayerMoveUp;
+    
     public MMF_Player AnotherPlayerMoveDown;
+    public MMF_Player ThisPlayerMoveDown;
     public MMF_Player PlayerKnockHead;
 
     public void ThisPlayerMoveUp()
@@ -16,6 +18,13 @@ public class PlayerHeight : MonoBehaviour
         PlayerMoveUp.PlayFeedbacks();
         AnotherPlayerMoveDown.PlayFeedbacks();
     }
+
+    public void PlayerMoveDown()
+    {
+        height -= 1;
+        ThisPlayerMoveDown.PlayFeedbacks();
+    }
+
 
     public void ThisPlayerKnockHead() 
     {
