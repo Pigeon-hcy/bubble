@@ -34,6 +34,16 @@ public class PlayerMove : MonoBehaviour
     public int fuel;
     [Header("Score")]
     public int score;
+
+    [Header("Dash")]
+    public int DoubleClickWindowTimer;
+    public int DoubleClickWindow;
+    public string Last;
+    public bool inDoubleClick;
+    public MMF_Player P1RightDash;
+    public MMF_Player P1LeftDash;
+    public MMF_Player P2RightDash;
+    public MMF_Player P2LeftDash;
     private void OnMovement(InputValue value)
     {
         movement = value.Get<Vector2>();
@@ -50,6 +60,18 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        if (inDoubleClick && DoubleClickWindow > 0)
+        {
+            DoubleClickWindow--;
+
+
+        }
+        if (inDoubleClick && DoubleClickWindow <= 0)
+        {
+            inDoubleClick = false;
+            DoubleClickWindow = DoubleClickWindowTimer;
+        }
+
         if (Input.GetKeyDown(KeyCode.W) && gameManager.blockInput == false && fuel >= 100)
         {
             if (playerHeight.height < 5 && playerHeight.height >= -5)
@@ -83,7 +105,6 @@ public class PlayerMove : MonoBehaviour
                 }
             }
         }
-
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && gameManager.blockInput == false && fuel >= 100)
         {
@@ -119,7 +140,174 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            if (!inDoubleClick)
+            {
+                switch (player)
+                {
+                    
+                    case PlayerType.Player1:
+                        Last = "A";
+                        inDoubleClick = true;
+                        break;
+                    case PlayerType.Player2:
+                        break;
+                }
+            }
+            else if (inDoubleClick && Last == "A" && fuel >= 25)
+            {
+                switch (player)
+                {
+                    case PlayerType.Player1:
+                        fuel -= 25;
+                        doubleClick("P1Left");
+                        inDoubleClick = false;
+                        DoubleClickWindow = DoubleClickWindowTimer;
+                        Debug.Log("Triggered");
+                        break;
+                    case PlayerType.Player2:
+                        break;
+                }
+            }
+             if (inDoubleClick && Last == "D")
+            {
+                switch (player)
+                {
+                    case PlayerType.Player1:
+                        Last = "A";
+                        DoubleClickWindow = DoubleClickWindowTimer;
+                        inDoubleClick = true;
+                        break;
+                    case PlayerType.Player2:
+                        break;
+                }
+            }
+        }
 
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            if (!inDoubleClick)
+            {
+                switch (player)
+                {
+
+                    case PlayerType.Player1:
+                        Last = "D";
+                        inDoubleClick = true;
+                        break;
+                    case PlayerType.Player2:
+                        break;
+                }
+            }
+            else if (inDoubleClick && Last == "D" && fuel >= 25)
+            {
+                switch (player)
+                {
+                    case PlayerType.Player1:
+                        fuel -= 25;
+                        doubleClick("P1Right");
+                        inDoubleClick = false;
+                        DoubleClickWindow = DoubleClickWindowTimer;
+                        Debug.Log("Triggered");
+                        break;
+                    case PlayerType.Player2:
+                        break;
+                }
+            }
+             if (inDoubleClick && Last == "A")
+            {
+                switch (player)
+                {
+                    case PlayerType.Player1:
+                        Last = "D";
+                        DoubleClickWindow = DoubleClickWindowTimer;
+                        inDoubleClick = true;
+                        break;
+                    case PlayerType.Player2:
+                        break;
+                }
+            }
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if (!inDoubleClick)
+            {
+                switch (player)
+                {
+                    case PlayerType.Player2:
+                        Last = "L";
+                        inDoubleClick = true;
+                        break;
+                }
+            }
+            else if (inDoubleClick && Last == "L" && fuel >= 25)
+            {
+                switch (player)
+                {
+                    case PlayerType.Player2:
+                        fuel -= 25;
+                        doubleClick("P2Left");
+                        inDoubleClick = false;
+                        Last = "";  // 重置 Last
+                        DoubleClickWindow = DoubleClickWindowTimer;
+                        Debug.Log("Triggered");
+                        break;
+                }
+            }
+            else if (inDoubleClick && Last == "R")
+            {
+                switch (player)
+                {
+                    case PlayerType.Player2:
+                        Last = "L";  // 更新 Last
+                        DoubleClickWindow = DoubleClickWindowTimer;
+                        inDoubleClick = true;
+                        break;
+                }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            if (!inDoubleClick)
+            {
+                switch (player)
+                {
+                    case PlayerType.Player2:
+                        Last = "R";
+                        inDoubleClick = true;
+                        break;
+                }
+            }
+            else if (inDoubleClick && Last == "R" && fuel >= 25)
+            {
+                switch (player)
+                {
+                    case PlayerType.Player2:
+                        fuel -= 25;
+                        doubleClick("P2Right");
+                        inDoubleClick = false;
+                        Last = "";  // 重置 Last
+                        DoubleClickWindow = DoubleClickWindowTimer;
+                        Debug.Log("Triggered");
+                        break;
+                }
+            }
+            else if (inDoubleClick && Last == "L")
+            {
+                switch (player)
+                {
+                    case PlayerType.Player2:
+                        Last = "R";  // 更新 Last
+                        DoubleClickWindow = DoubleClickWindowTimer;
+                        inDoubleClick = true;
+                        break;
+                }
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -189,4 +377,27 @@ public class PlayerMove : MonoBehaviour
         this.transform.position = new Vector3(currentPosition.x, roundedY, currentPosition.z);
         gameManager.blockInput = false;
     }
+
+    private void doubleClick(string move)
+    {
+        if (move == "P1Right")
+        {
+            P1RightDash.PlayFeedbacks();
+        }
+        else if (move == "P1Left")
+        {
+            P1LeftDash.PlayFeedbacks();
+        }
+        else if (move == "P2Right")
+        {
+            P2RightDash.PlayFeedbacks();
+            
+        }
+        else if (move == "P2Left")
+        {
+            P2LeftDash.PlayFeedbacks();
+        }
+    }
+
+
 }
