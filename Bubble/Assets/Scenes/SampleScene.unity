@@ -478,6 +478,8 @@ MonoBehaviour:
   downrightCollision: {fileID: 129658922}
   upleftCollision: {fileID: 1118518186}
   downleftCollision: {fileID: 490711400}
+  fuel: 0
+  score: 0
 --- !u!114 &99647034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3699,6 +3701,7 @@ GameObject:
   - component: {fileID: 1009304457}
   - component: {fileID: 1009304456}
   - component: {fileID: 1009304455}
+  - component: {fileID: 1009304458}
   m_Layer: 0
   m_Name: FuelCollector
   m_TagString: Untagged
@@ -3849,6 +3852,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1009304458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009304453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e1e6c0e80b1857479a69c67349c6904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMove: {fileID: 99647033}
+  test_Text: {fileID: 1711740158}
 --- !u!1 &1045506437
 GameObject:
   m_ObjectHideFlags: 0
@@ -4494,6 +4511,8 @@ MonoBehaviour:
   downrightCollision: {fileID: 1871852166}
   upleftCollision: {fileID: 1539906610}
   downleftCollision: {fileID: 1512701537}
+  fuel: 0
+  score: 0
 --- !u!114 &1171355690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4962,8 +4981,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294957824
+  m_fontColor: {r: 0, g: 0.8592484, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6527,8 +6546,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8420,6 +8439,7 @@ GameObject:
   - component: {fileID: 2051775889}
   - component: {fileID: 2051775888}
   - component: {fileID: 2051775887}
+  - component: {fileID: 2051775890}
   m_Layer: 0
   m_Name: FuelCollector
   m_TagString: Untagged
@@ -8570,6 +8590,68 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2051775890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051775885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e1e6c0e80b1857479a69c67349c6904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMove: {fileID: 1171355689}
+  test_Text: {fileID: 1450958932}
+--- !u!1 &2122779759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2122779761}
+  - component: {fileID: 2122779760}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2122779760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122779759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4260659fafd98945a84df600c864916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Coin: {fileID: 7994308658844257413, guid: a3ec7874315c9ad40b27241475ff75c6, type: 3}
+  shootTimer: 300
+  shootTime: 300
+  randomRad: 20
+--- !u!4 &2122779761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122779759}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 14.982467, z: -0.21345809}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -8584,3 +8666,4 @@ SceneRoots:
   - {fileID: 1316059966}
   - {fileID: 1367536885}
   - {fileID: 549015563}
+  - {fileID: 2122779761}

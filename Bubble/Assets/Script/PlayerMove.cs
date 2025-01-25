@@ -10,7 +10,7 @@ public class PlayerMove : MonoBehaviour
 {
     public enum PlayerType
     {
-        Player1, 
+        Player1,
         Player2
     };
 
@@ -30,6 +30,10 @@ public class PlayerMove : MonoBehaviour
     public MMF_Player upleftCollision;
     public MMF_Player downleftCollision;
 
+    [Header("Fuel")]
+    public int fuel;
+    [Header("Score")]
+    public int score;
     private void OnMovement(InputValue value)
     {
         movement = value.Get<Vector2>();
@@ -46,10 +50,11 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && gameManager.blockInput == false)
+        if (Input.GetKeyDown(KeyCode.W) && gameManager.blockInput == false && fuel >= 100)
         {
             if (playerHeight.height < 5 && playerHeight.height >= -5)
             {
+                fuel -= 100;
                 if (!canGoUp)
                 {
                     switch (player)
@@ -78,10 +83,13 @@ public class PlayerMove : MonoBehaviour
                 }
             }
         }
-        if (playerHeight.height < 5 && playerHeight.height >= -5)
+
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) && gameManager.blockInput == false && fuel >= 100)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow) && gameManager.blockInput == false)
+            if (playerHeight.height < 5 && playerHeight.height >= -5)
             {
+                fuel -= 100;
                 if (!canGoUp)
                 {
                     switch (player)
@@ -110,6 +118,7 @@ public class PlayerMove : MonoBehaviour
                 }
             }
         }
+
 
     }
 
@@ -159,7 +168,7 @@ public class PlayerMove : MonoBehaviour
                     break;
             }
         }
-       
+
     }
     private IEnumerator StartMovePlayer()
     {

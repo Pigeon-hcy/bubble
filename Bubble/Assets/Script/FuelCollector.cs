@@ -1,7 +1,10 @@
+using TMPro;
 using UnityEngine;
 
 public class FuelCollector : MonoBehaviour
 {
+    public PlayerMove playerMove;
+    public TMP_Text test_Text;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -11,6 +14,22 @@ public class FuelCollector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        test_Text.text = playerMove.fuel.ToString();
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Fuel")
+        {
+            Destroy(collision.gameObject);
+            playerMove.fuel += 1;
+        }
+
+        if (collision.gameObject.tag == "Coin")
+        {
+            Destroy(collision.gameObject);
+            playerMove.score += 1;
+        }
     }
 }
