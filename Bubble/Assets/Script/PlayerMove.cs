@@ -344,8 +344,11 @@ public class PlayerMove : MonoBehaviour
                         {
                             upleftCollision.PlayFeedbacks();
                             anotherPlayer.downrightCollision.PlayFeedbacks();
-                            playerHeight.height += 1;
-                            anotherPlayerHeight.height -= 1;
+                                playerHeight.height += 1;
+                            if (anotherPlayerHeight.height > -5)
+                            {
+                                anotherPlayerHeight.height -= 1;
+                            }
                             
                         }
                         //player 2 on the left
@@ -354,7 +357,10 @@ public class PlayerMove : MonoBehaviour
                             uprightCollision.PlayFeedbacks();
                             anotherPlayer.downleftCollision.PlayFeedbacks();
                             playerHeight.height += 1;
-                            anotherPlayerHeight.height -= 1;
+                            if (anotherPlayerHeight.height > -5)
+                            {
+                                anotherPlayerHeight.height -= 1;
+                            }
                         }
                     }
                     //player 1 go down
@@ -365,7 +371,10 @@ public class PlayerMove : MonoBehaviour
                         {
                             downleftCollision.PlayFeedbacks();
                             anotherPlayer.uprightCollision.PlayFeedbacks();
-                            playerHeight.height -= 1;
+                            if (playerHeight.height > -5)
+                            {
+                                playerHeight.height -= 1;
+                            }
                             anotherPlayerHeight.height += 1;
                         }
                         //player 2 on the left
@@ -373,7 +382,10 @@ public class PlayerMove : MonoBehaviour
                         {
                             downrightCollision.PlayFeedbacks();
                             anotherPlayer.upleftCollision.PlayFeedbacks();
-                            playerHeight.height -= 1;
+                            if (playerHeight.height > -5)
+                            {
+                                playerHeight.height -= 1;
+                            }
                             anotherPlayerHeight.height += 1;
                         }
                     }

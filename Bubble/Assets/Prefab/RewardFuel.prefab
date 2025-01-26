@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3497550225699632404}
   - component: {fileID: 1404253320425667080}
   - component: {fileID: 868734861660276737}
+  - component: {fileID: 8543415961406451953}
   m_Layer: 0
   m_Name: RewardFuel
   m_TagString: Ice
@@ -162,3 +163,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8543415961406451953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3331861237280563785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421691177282ddf47a49619238cf9d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 868734861660276737}

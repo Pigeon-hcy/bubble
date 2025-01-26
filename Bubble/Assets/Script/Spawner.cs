@@ -35,7 +35,7 @@ public class Spawner : MonoBehaviour
             for (int i = 0; i < Random.Range(1, 4); i++)
             {
                 Vector3 spawnPoint = new Vector3(Random.Range(randomRad, -randomRad), this.transform.position.y, 0);
-                var j = Random.Range(0, 4);
+                var j = Random.Range(0, 5);
                 if (j <= 1)
                 {
                     Instantiate(Fuel, spawnPoint, Quaternion.identity);
