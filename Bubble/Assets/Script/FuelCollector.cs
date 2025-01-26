@@ -9,7 +9,7 @@ public class FuelCollector : MonoBehaviour
     public TMP_Text test_Text;
     public MMF_Player onCollect;
     public MMProgressBar fuelBar;
-
+    public MMF_Player onIce;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -42,7 +42,9 @@ public class FuelCollector : MonoBehaviour
             if (playerMove.fuel < 1000)
             {
                 playerMove.fuel += 25;
+
             }
+            onIce.PlayFeedbacks();
             fuelBar.UpdateBar(playerMove.fuel, 0, 1000);
         }
 

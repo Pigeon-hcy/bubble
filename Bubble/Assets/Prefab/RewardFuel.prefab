@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1404253320425667080}
   - component: {fileID: 868734861660276737}
   - component: {fileID: 8543415961406451953}
+  - component: {fileID: -5452424605462192107}
   m_Layer: 0
   m_Name: RewardFuel
   m_TagString: Ice
@@ -79,8 +80,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 3813072908724137947, guid: 27f4bf258d2dd6d4a90d2d43f76289c2, type: 3}
-  m_Color: {r: 0, g: 0.8665147, b: 1, a: 1}
+  m_Sprite: {fileID: 3196937870376106873, guid: e36048be44d3e9d4d86cd635857e1033, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -128,7 +129,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.15, y: 1.79}
+    oldSize: {x: 1.4, y: 0.8933333}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -176,3 +177,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 868734861660276737}
+--- !u!114 &-5452424605462192107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3331861237280563785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d555d5eb0a981b54f94961c6b6f97214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 100
