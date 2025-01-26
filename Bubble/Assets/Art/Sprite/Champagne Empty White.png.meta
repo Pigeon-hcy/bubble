@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8914f0d46fbd63244acc4624655bbfad
+guid: 453bc2060dc033c4ebd8906ca52e3e2b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6007857137893288414
-    second: Sprite-0001_0
+      213: -8928308410675093027
+    second: Champagne Empty White_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite-0001_0
+      name: Champagne Empty White_0
       rect:
         serializedVersion: 2
-        x: 117
-        y: 101
-        width: 674
-        height: 582
+        x: 68
+        y: 0
+        width: 65
+        height: 199
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 226539a93cdcf9ca0800000000000000
-      internalID: -6007857137893288414
+      spriteID: dd124900ec6481480800000000000000
+      internalID: -8928308410675093027
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Sprite-0001_0: -6007857137893288414
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
