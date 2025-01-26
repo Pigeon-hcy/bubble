@@ -33,6 +33,7 @@ public class PlayerMove : MonoBehaviour
 
     [Header("Fuel")]
     public int fuel;
+    public MMProgressBar progressBar;
     [Header("Score")]
     public int score;
 
@@ -79,6 +80,8 @@ public class PlayerMove : MonoBehaviour
             if (playerHeight.height < 5 && playerHeight.height >= -5)
             {
                 fuel -= 50;
+
+                progressBar.UpdateBar(fuel, 0f, 1000f);
                 if (!canGoUp)
                 {
                     switch (player)
@@ -114,6 +117,7 @@ public class PlayerMove : MonoBehaviour
             if (playerHeight.height < 5 && playerHeight.height >= -5)
             {
                 fuel -= 50;
+                progressBar.UpdateBar(fuel, 0f, 1000f);
                 if (!canGoUp)
                 {
                     switch (player)
@@ -164,6 +168,7 @@ public class PlayerMove : MonoBehaviour
                 {
                     case PlayerType.Player1:
                         fuel -= 25;
+                        progressBar.UpdateBar(fuel, 0f, 1000f);
                         doubleClick("P1Left");
                         inDoubleClick = false;
                         DoubleClickWindow = DoubleClickWindowTimer;
@@ -209,6 +214,7 @@ public class PlayerMove : MonoBehaviour
                 {
                     case PlayerType.Player1:
                         fuel -= 25;
+                        progressBar.UpdateBar(fuel, 0f, 1000f);
                         doubleClick("P1Right");
                         inDoubleClick = false;
                         DoubleClickWindow = DoubleClickWindowTimer;
@@ -252,6 +258,7 @@ public class PlayerMove : MonoBehaviour
                 {
                     case PlayerType.Player2:
                         fuel -= 25;
+                        progressBar.UpdateBar(fuel, 0f, 1000f);
                         doubleClick("P2Left");
                         inDoubleClick = false;
                         Last = "";  // ÖØÖÃ Last
@@ -291,6 +298,7 @@ public class PlayerMove : MonoBehaviour
                 {
                     case PlayerType.Player2:
                         fuel -= 25;
+                        progressBar.UpdateBar(fuel, 0f, 1000f);
                         doubleClick("P2Right");
                         inDoubleClick = false;
                         Last = "";  // ÖØÖÃ Last
@@ -343,11 +351,17 @@ public class PlayerMove : MonoBehaviour
                         if (collision.transform.position.x > this.transform.position.x)
                         {
                             upleftCollision.PlayFeedbacks();
-                            anotherPlayer.downrightCollision.PlayFeedbacks();
+                            
                                 playerHeight.height += 1;
                             if (anotherPlayerHeight.height > -5)
                             {
                                 anotherPlayerHeight.height -= 1;
+                                anotherPlayer.downrightCollision.PlayFeedbacks();
+                            }
+                            else
+                            {
+                                anotherPlayerHeight.height += 1;
+                                anotherPlayer.uprightCollision.PlayFeedbacks();
                             }
                             
                         }
@@ -355,11 +369,17 @@ public class PlayerMove : MonoBehaviour
                         else if (collision.transform.position.x < this.transform.position.x)
                         {
                             uprightCollision.PlayFeedbacks();
-                            anotherPlayer.downleftCollision.PlayFeedbacks();
+                            
                             playerHeight.height += 1;
                             if (anotherPlayerHeight.height > -5)
                             {
                                 anotherPlayerHeight.height -= 1;
+                                anotherPlayer.downleftCollision.PlayFeedbacks();
+                            }
+                            else
+                            {
+                                anotherPlayerHeight.height += 1;
+                                anotherPlayer.upleftCollision.PlayFeedbacks();
                             }
                         }
                     }
@@ -369,22 +389,34 @@ public class PlayerMove : MonoBehaviour
                         //player 2 on the right
                         if (collision.transform.position.x > this.transform.position.x)
                         {
-                            downleftCollision.PlayFeedbacks();
+                            
                             anotherPlayer.uprightCollision.PlayFeedbacks();
                             if (playerHeight.height > -5)
                             {
                                 playerHeight.height -= 1;
+                                downleftCollision.PlayFeedbacks();
+                            }
+                            else
+                            {
+                                playerHeight.height += 1;
+                                upleftCollision.PlayFeedbacks();
                             }
                             anotherPlayerHeight.height += 1;
                         }
                         //player 2 on the left
                         else if (collision.transform.position.x < this.transform.position.x)
                         {
-                            downrightCollision.PlayFeedbacks();
+                            
                             anotherPlayer.upleftCollision.PlayFeedbacks();
                             if (playerHeight.height > -5)
                             {
                                 playerHeight.height -= 1;
+                                downrightCollision.PlayFeedbacks();
+                            }
+                            else
+                            {
+                                playerHeight.height += 1;
+                                uprightCollision.PlayFeedbacks();
                             }
                             anotherPlayerHeight.height += 1;
                         }

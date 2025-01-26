@@ -10,13 +10,31 @@ public class PlayerHeight : MonoBehaviour
     public MMF_Player AnotherPlayerMoveDown;
     public MMF_Player starOnHead;
     public MMF_Player PlayerKnockHead;
-
+    public MMF_Player BigMove;
     public void ThisPlayerMoveUp()
     {
-        height += 1;
-        AnotherPlayer.height -= 1;
-        PlayerMoveUp.PlayFeedbacks();
-        AnotherPlayerMoveDown.PlayFeedbacks();
+        if (height == -5)
+        {
+            height += 3;
+            BigMove.PlayFeedbacks();
+            if (AnotherPlayer.height > -5)
+            {
+                AnotherPlayer.height -= 1;
+                AnotherPlayerMoveDown.PlayFeedbacks();
+            }
+        }
+        else
+        {
+
+            height += 1;
+            if (AnotherPlayer.height > -5)
+            {
+                AnotherPlayer.height -= 1;
+                AnotherPlayerMoveDown.PlayFeedbacks();
+            }
+
+            PlayerMoveUp.PlayFeedbacks();
+        }
     }
 
     public void PlayerMoveDown()

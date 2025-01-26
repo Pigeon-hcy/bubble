@@ -1,4 +1,5 @@
 using MoreMountains.Feedbacks;
+using MoreMountains.Tools;
 using TMPro;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ public class FuelCollector : MonoBehaviour
     public PlayerMove playerMove;
     public TMP_Text test_Text;
     public MMF_Player onCollect;
+    public MMProgressBar fuelBar;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,13 +28,22 @@ public class FuelCollector : MonoBehaviour
         if (collision.gameObject.tag == "Fuel")
         {
             Destroy(collision.gameObject);
-            playerMove.fuel += 1;
+            if (playerMove.fuel < 1000)
+            {
+                playerMove.fuel += 1;
+            }
+            fuelBar.UpdateBar(playerMove.fuel, 0, 1000);
         }
 
         if (collision.gameObject.tag == "Ice")
         {
             Destroy(collision.gameObject);
-            playerMove.fuel += 25;
+
+            if (playerMove.fuel < 1000)
+            {
+                playerMove.fuel += 25;
+            }
+            fuelBar.UpdateBar(playerMove.fuel, 0, 1000);
         }
 
         if (collision.gameObject.tag == "Coin")
