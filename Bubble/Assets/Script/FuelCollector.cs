@@ -26,6 +26,12 @@ public class FuelCollector : MonoBehaviour
             playerMove.fuel += 1;
         }
 
+        if (collision.gameObject.tag == "Ice")
+        {
+            Destroy(collision.gameObject);
+            playerMove.fuel += 25;
+        }
+
         if (collision.gameObject.tag == "Coin")
         {
             Destroy(collision.gameObject);

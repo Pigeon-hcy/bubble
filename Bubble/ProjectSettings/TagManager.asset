@@ -7,6 +7,7 @@ TagManager:
   - Fuel
   - Coin
   - Star
+  - Ice
   layers:
   - Default
   - TransparentFX

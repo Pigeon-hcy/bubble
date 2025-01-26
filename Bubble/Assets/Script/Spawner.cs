@@ -45,7 +45,7 @@ public class Spawner : MonoBehaviour
                     Instantiate(Star, spawnPoint, Quaternion.identity);
                 }
 
-                starshootTimer = starshootTime + Random.Range(0, 300);
+                starshootTimer = starshootTime + Random.Range(-100, 200);
             }
 
         }
