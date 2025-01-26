@@ -1,3 +1,4 @@
+using System.Collections;
 using MoreMountains.Feedbacks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,6 +21,11 @@ public class GameManager : MonoBehaviour
     public AudioSource BGM1;
     public AudioSource BGM2;
 
+
+    public GameObject Spawnner;
+    public AudioSource BGM3;
+    public MMF_Player onGameStart;
+   
     public void Update()
     {
         //almost win!
@@ -58,5 +64,21 @@ public class GameManager : MonoBehaviour
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
+    }
+
+    public void OnGamestart()
+    {
+        StartCoroutine(startYourEngine());
+    }
+
+    private IEnumerator startYourEngine()
+    {
+        onGameStart.PlayFeedbacks();
+        yield return new WaitForSeconds(3);
+        Spawnner.SetActive(true);
+        score1.enabled = true;
+        score2.enabled = true;
+        BGM3.volume = 0;
+        BGM1.volume = 1;
     }
 }
