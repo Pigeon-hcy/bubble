@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using TMPro;
 using UnityEngine;
 
@@ -5,6 +6,7 @@ public class FuelCollector : MonoBehaviour
 {
     public PlayerMove playerMove;
     public TMP_Text test_Text;
+    public MMF_Player onCollect;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,6 +38,7 @@ public class FuelCollector : MonoBehaviour
         {
             Destroy(collision.gameObject);
             playerMove.score += 1;
+            onCollect.PlayFeedbacks();
         }
     }
 }
