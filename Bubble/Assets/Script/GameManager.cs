@@ -1,5 +1,6 @@
 using MoreMountains.Feedbacks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,17 +40,23 @@ public class GameManager : MonoBehaviour
         }
 
         //win!
-        if (score1.score == 20 && P1WnPlayed == false)
+        if (score1.score >= 20 && P1WinPlayed == false)
         {
             P1Win.PlayFeedbacks();
-            P1WnPlayed=true;
+            P1WinPlayed = true;
             P2WinPlayed=true;
         }
-        if (score2.score == 20 && P2WinPlayed == false)
+        if (score2.score >= 20 && P2WinPlayed == false)
         {
             P2Win.PlayFeedbacks();
             P1WnPlayed = true;
             P2WinPlayed = true;
         }
+    }
+
+    public void reload()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 }
